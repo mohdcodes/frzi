@@ -25,6 +25,7 @@ function Dashboard() {
     <>
       {isLoading && <LoadingScreen />}
       <div className="max-w-7xl mx-auto px-4 py-8">
+        <h4 className="text-black text-base mb-6">Welcome, Rouen Agathe</h4>
         <div className="flex items-center space-x-3 mb-6">
           <div className="w-8 h-8 bg-blue-900 text-white flex items-center justify-center rounded">
             <FileText className="w-5 h-5" />

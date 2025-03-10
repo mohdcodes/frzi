@@ -18,12 +18,12 @@ const applications = [
   {
     id: 'FRA-2024-0002',
     name: 'Prem Bahadur Nepali',
-    date: '2024-03-14',
+    date: '2025-01-27',
     status: 'Approved',
     document:
       'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
     modalImage: 'man1.jpg',
-    dcid: '123',
+    dcid: '11909205',
   },
   {
     id: 'FRA-2024-0003',
