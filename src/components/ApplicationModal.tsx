@@ -67,7 +67,7 @@ function ApplicationModal({
               <div>
                 <label className="text-sm text-gray-500">Submission Date</label>
                 <p className="text-lg">
-                  {new Date(application.date).toLocaleDateString()}
+                  {new Date(application.date).toLocaleDateString('en-GB')}
                 </p>
               </div>
 
