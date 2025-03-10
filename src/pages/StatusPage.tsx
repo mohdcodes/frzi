@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FileDown, FileText } from 'lucide-react';
 import LoadingScreen from '../components/LoadingScreen';
+import ApplicationModal from '../components/ApplicationModal';
 
 // Sample data - in a real app this would come from an API
 const applications = [
@@ -9,55 +10,84 @@ const applications = [
     name: 'John Smith',
     date: '2024-03-15',
     status: 'In Progress',
-    document: '/sample.pdf',
+    document:
+      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
+    // modalImage: 'man1.jpg',
   },
   {
     id: 'FRA-2024-0002',
     name: 'Marie Claire',
     date: '2024-03-14',
     status: 'Approved',
-    document: '/approved.pdf',
+    document:
+      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
+    modalImage: 'man1.jpg',
   },
   {
     id: 'FRA-2024-0003',
     name: 'Carlos Rodriguez',
     date: '2024-03-13',
     status: 'Under Review',
-    document: '/review.pdf',
+    document:
+      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
   },
   {
     id: 'FRA-2024-0005',
     name: 'Carlos Rodriguez',
     date: '2024-03-13',
     status: 'Approved',
-    document: '/review.pdf',
+    document:
+      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
+    modalImage: 'man1.jpg',
   },
   {
     id: 'FRA-2024-0005',
     name: 'Carlos Rodriguez',
     date: '2024-03-13',
     status: 'Approved',
-    document: '/review.pdf',
+    document:
+      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
+    modalImage: 'man1.jpg',
   },
 ];
 
 function StatusPage() {
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedApplication, setSelectedApplication] = useState<
+    (typeof applications)[0] | null
+  >(null);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
   }, []);
 
-  const handleDownload = (documentPath: string) => {
-    // In a real application, this would trigger a file download
-    console.log('Downloading:', documentPath);
+  const handleDownload = (documentPath: string, fileName: string) => {
+    const link = document.createElement('a');
+    link.href = documentPath;
+    link.download = fileName; // Ensures direct download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
     <>
       {isLoading && <LoadingScreen />}
+      {selectedApplication && (
+        <ApplicationModal
+          imageLink={selectedApplication.modalImage}
+          application={selectedApplication}
+          onClose={() => setSelectedApplication(null)}
+          onDownload={() =>
+            handleDownload(
+              selectedApplication.document,
+              `Application_${selectedApplication.id}.pdf`
+            )
+          }
+        />
+      )}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center space-x-3 mb-6">
           <div className="w-8 h-8 bg-blue-900 text-white flex items-center justify-center rounded">
@@ -92,7 +122,12 @@ function StatusPage() {
                 {applications.map((app) => (
                   <tr key={app.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-900">
-                      {app.id}
+                      <button
+                        onClick={() => setSelectedApplication(app)}
+                        className="hover:underline focus:outline-none focus:underline"
+                      >
+                        {app.id}
+                      </button>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                       {app.name}
@@ -115,13 +150,22 @@ function StatusPage() {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      <button
-                        onClick={() => handleDownload(app.document)}
-                        className="text-blue-900 hover:text-blue-700 flex items-center space-x-1"
-                      >
-                        <FileDown className="w-4 h-4" />
-                        <span>Download</span>
-                      </button>
+                      {app.status === 'Approved' ? (
+                        <button
+                          onClick={() =>
+                            handleDownload(
+                              app.document,
+                              `Application_${app.id}.pdf`
+                            )
+                          }
+                          className="text-blue-900 hover:text-blue-700 flex items-center space-x-1"
+                        >
+                          <FileDown className="w-4 h-4" />
+                          <span>Download</span>
+                        </button>
+                      ) : (
+                        <span className="text-gray-400">N/A</span>
+                      )}
                     </td>
                   </tr>
                 ))}
