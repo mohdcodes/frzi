@@ -139,7 +139,7 @@ function StatusPage() {
                       {app.name}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      {new Date(app.date).toLocaleDateString()}
+                      {new Date(app.date).toLocaleDateString('en-GB')}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span
