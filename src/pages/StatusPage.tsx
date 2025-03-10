@@ -7,7 +7,7 @@ import ApplicationModal from '../components/ApplicationModal';
 const applications = [
   {
     id: 'FR2501202580367',
-    name: 'Ajit Sunar',
+    name: 'Ajita Sunar',
     date: '2025-01-25',
     status: 'Approved',
     document:
@@ -42,7 +42,16 @@ const applications = [
     document:
       'https://www.dropbox.com/scl/fi/mo95x7w88a5c2nx8805tz/PREM-BAHADUR-NEPALI-2701202590263.pdf?rlkey=j0r773dnqfd3nbqf6rdiz60t3&st=jgzyhl67&dl=1',
     modalImage: 'man1.jpg',
-    dcid: '123',
+    dcid: 'PA2965520',
+  },
+  {
+    id: 'R2501202580038',
+    name: 'Tulsi Gurung',
+    date: '2025/01/25',
+    status: 'Approved',
+    document: '',
+    modalImage: 'man1.jpg',
+    dcid: 'PA2965554',
   },
 ];
 
