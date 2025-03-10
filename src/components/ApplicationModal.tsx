@@ -11,6 +11,7 @@ interface Application {
 
 interface ApplicationModalProps {
   application: Application;
+  dcid: string; // ✅ Accepts the new `dcid` prop
   imageLink?: string; // ✅ Accepts the new `imageLink` prop
   onClose: () => void;
   onDownload: (path: string) => void;
@@ -18,7 +19,8 @@ interface ApplicationModalProps {
 
 function ApplicationModal({
   application,
-  imageLink, // ✅ Now accepts `imageLink`
+  imageLink, // ✅ Now accepts `imageLink`s
+  dcid, // ✅ Destructure the new `dcid` prop
   onClose,
   onDownload,
 }: ApplicationModalProps) {
@@ -27,7 +29,7 @@ function ApplicationModal({
       <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl">
         <div className="flex justify-between items-center p-6 border-b">
           <h2 className="text-2xl font-semibold text-blue-900">
-            Application Details
+            {application.name}
           </h2>
           <button
             onClick={onClose}
@@ -58,8 +60,8 @@ function ApplicationModal({
               </div>
 
               <div>
-                <label className="text-sm text-gray-500">Name</label>
-                <p className="text-lg">{application.name}</p>
+                <label className="text-sm text-gray-500">ID Number</label>
+                <p className="text-lg">{dcid}</p>
               </div>
 
               <div>
@@ -72,7 +74,7 @@ function ApplicationModal({
               <div>
                 <label className="text-sm text-gray-500">Status</label>
                 <span
-                  className={`mt-1 px-3 py-1 inline-flex text-sm font-semibold rounded-full
+                  className={`mt-1 px-3 py-1.5 inline-flex text-sm font-semibold rounded-full
                   ${
                     application.status === 'Approved'
                       ? 'bg-green-100 text-green-800'
@@ -105,8 +107,7 @@ function ApplicationModal({
 
         <div className="bg-gray-50 px-6 py-4 rounded-b-lg">
           <p className="text-sm text-gray-600">
-            Last updated: {new Date().toLocaleDateString()}{' '}
-            {new Date().toLocaleTimeString()}
+            Last updated: {new Date().toLocaleDateString()}
           </p>
         </div>
       </div>

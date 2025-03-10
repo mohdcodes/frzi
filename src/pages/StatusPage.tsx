@@ -13,15 +13,17 @@ const applications = [
     document:
       'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
     // modalImage: 'man1.jpg',
+    dcid: '123',
   },
   {
     id: 'FRA-2024-0002',
-    name: 'Marie Claire',
+    name: 'Prem Bahadur Nepali',
     date: '2024-03-14',
     status: 'Approved',
     document:
       'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
     modalImage: 'man1.jpg',
+    dcid: '123',
   },
   {
     id: 'FRA-2024-0003',
@@ -30,6 +32,7 @@ const applications = [
     status: 'Under Review',
     document:
       'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
+    dcid: '123',
   },
   {
     id: 'FRA-2024-0005',
@@ -39,6 +42,7 @@ const applications = [
     document:
       'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
     modalImage: 'man1.jpg',
+    dcid: '123',
   },
   {
     id: 'FRA-2024-0005',
@@ -48,6 +52,7 @@ const applications = [
     document:
       'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
     modalImage: 'man1.jpg',
+    dcid: '123',
   },
 ];
 
@@ -77,6 +82,7 @@ function StatusPage() {
       {isLoading && <LoadingScreen />}
       {selectedApplication && (
         <ApplicationModal
+          dcid={selectedApplication.dcid}
           imageLink={selectedApplication.modalImage}
           application={selectedApplication}
           onClose={() => setSelectedApplication(null)}
@@ -93,7 +99,7 @@ function StatusPage() {
           <div className="w-8 h-8 bg-blue-900 text-white flex items-center justify-center rounded">
             <FileText className="w-5 h-5" />
           </div>
-          <h1 className="text-3xl text-blue-900">Application Status</h1>
+          <h1 className="text-3xl text-blue-900">Application Details</h1>
         </div>
 
         <div className="bg-white shadow-md rounded-lg overflow-hidden">

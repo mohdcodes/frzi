@@ -48,11 +48,17 @@ function Dashboard() {
             part of a group of several applications.
           </p>
 
+          <button className="w-full md:w-auto px-6 py-3 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors mr-4">
+            Create a new application
+          </button>
           <button
             onClick={handleStatusCheck}
-            className="w-full md:w-auto px-6 py-3 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors"
+            className="w-full md:w-auto px-6 py-3 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors mr-4"
           >
             Check status of your application
+          </button>
+          <button className="w-full md:w-auto px-6 py-3 bg-blue-900 text-white rounded hover:bg-blue-800 transition-colors">
+            Dashboard
           </button>
 
           <div className="mt-8">
