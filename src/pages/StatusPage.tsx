@@ -32,7 +32,7 @@ const applications = [
     status: 'Under Review',
     document:
       'https://www.dropbox.com/scl/fi/mo95x7w88a5c2nx8805tz/PREM-BAHADUR-NEPALI-2701202590263.pdf?rlkey=j0r773dnqfd3nbqf6rdiz60t3&st=jgzyhl67&dl=1',
-    dcid: '123',
+    dcid: '11909222',
   },
   {
     id: 'FR0201202500569',
@@ -41,16 +41,14 @@ const applications = [
     status: 'Approved',
     document:
       'https://www.dropbox.com/scl/fi/mo95x7w88a5c2nx8805tz/PREM-BAHADUR-NEPALI-2701202590263.pdf?rlkey=j0r773dnqfd3nbqf6rdiz60t3&st=jgzyhl67&dl=1',
-    modalImage: 'man1.jpg',
     dcid: 'PA2965520',
   },
   {
-    id: 'R2501202580038',
+    id: 'FR2501202580038',
     name: 'Tulsi Gurung',
     date: '2025/01/25',
     status: 'Approved',
     document: '',
-    modalImage: 'man1.jpg',
     dcid: 'PA2965554',
   },
 ];
@@ -123,57 +121,114 @@ function StatusPage() {
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {applications.map((app) => (
-                  <tr key={app.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-900">
-                      <button
-                        onClick={() => setSelectedApplication(app)}
-                        className="hover:underline focus:outline-none focus:underline"
-                      >
-                        {app.id}
-                      </button>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      {app.name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      {new Date(app.date).toLocaleDateString('en-GB')}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span
-                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full
-                        ${
-                          app.status === 'Approved'
-                            ? 'bg-green-100 text-green-800'
-                            : app.status === 'In Progress'
-                            ? 'bg-blue-100 text-blue-800'
-                            : 'bg-yellow-100 text-yellow-800'
-                        }`}
-                      >
-                        {app.status}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                      {app.status === 'Approved' ? (
+              {/* <tbody className="bg-white divide-y divide-gray-200">
+                  {applications.map((app) => (
+                    <tr key={app.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-900">
                         <button
-                          onClick={() =>
-                            handleDownload(
-                              app.document,
-                              `Application_${app.id}.pdf`
-                            )
-                          }
-                          className="text-blue-900 hover:text-blue-700 flex items-center space-x-1"
+                          onClick={() => setSelectedApplication(app)}
+                          className="hover:underline focus:outline-none focus:underline"
                         >
-                          <FileDown className="w-4 h-4" />
-                          <span>Download</span>
+                          {app.id}
                         </button>
-                      ) : (
-                        <span className="text-gray-400">N/A</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {app.name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {new Date(app.date).toLocaleDateString('en-GB')}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span
+                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+                          ${
+                            app.status === 'Approved'
+                              ? 'bg-green-100 text-green-800'
+                              : app.status === 'In Progress'
+                              ? 'bg-blue-100 text-blue-800'
+                              : 'bg-yellow-100 text-yellow-800'
+                          }`}
+                        >
+                          {app.status}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {app.status === 'Approved' ? (
+                          <button
+                            onClick={() =>
+                              handleDownload(
+                                app.document,
+                                `Application_${app.id}.pdf`
+                              )
+                            }
+                            className="text-blue-900 hover:text-blue-700 flex items-center space-x-1"
+                          >
+                            <FileDown className="w-4 h-4" />
+                            <span>Download</span>
+                          </button>
+                        ) : (
+                          <span className="text-gray-400">N/A</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody> */}
+              <tbody className="bg-white divide-y divide-gray-200">
+                {[...applications]
+                  .sort(
+                    (a, b) =>
+                      new Date(b.date).getTime() - new Date(a.date).getTime()
+                  ) // Sort from newest to oldest
+                  .map((app) => (
+                    <tr key={app.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-900">
+                        <button
+                          onClick={() => setSelectedApplication(app)}
+                          className="hover:underline focus:outline-none focus:underline"
+                        >
+                          {app.id}
+                        </button>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {app.name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {new Date(app.date).toLocaleDateString('en-GB')}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span
+                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+            ${
+              app.status === 'Approved'
+                ? 'bg-green-100 text-green-800'
+                : app.status === 'In Progress'
+                ? 'bg-blue-100 text-blue-800'
+                : 'bg-yellow-100 text-yellow-800'
+            }`}
+                        >
+                          {app.status}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                        {app.status === 'Approved' ? (
+                          <button
+                            onClick={() =>
+                              handleDownload(
+                                app.document,
+                                `Application_${app.id}.pdf`
+                              )
+                            }
+                            className="text-blue-900 hover:text-blue-700 flex items-center space-x-1"
+                          >
+                            <FileDown className="w-4 h-4" />
+                            <span>Download</span>
+                          </button>
+                        ) : (
+                          <span className="text-gray-400">N/A</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
