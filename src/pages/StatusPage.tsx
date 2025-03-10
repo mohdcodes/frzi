@@ -6,51 +6,41 @@ import ApplicationModal from '../components/ApplicationModal';
 // Sample data - in a real app this would come from an API
 const applications = [
   {
-    id: 'FRA-2024-0001',
-    name: 'John Smith',
-    date: '2024-03-15',
-    status: 'In Progress',
+    id: 'FR2501202580367',
+    name: 'Ajit Sunar',
+    date: '2025-01-25',
+    status: 'Approved',
     document:
       'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
-    // modalImage: 'man1.jpg',
-    dcid: '123',
+    modalImage: 'ajeeta.jpg',
+    dcid: '11909250',
   },
   {
-    id: 'FRA-2024-0002',
+    id: 'FR2701202590263',
     name: 'Prem Bahadur Nepali',
     date: '2025-01-27',
     status: 'Approved',
     document:
-      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
+      'https://www.dropbox.com/scl/fi/mo95x7w88a5c2nx8805tz/PREM-BAHADUR-NEPALI-2701202590263.pdf?rlkey=j0r773dnqfd3nbqf6rdiz60t3&st=jgzyhl67&dl=1',
     modalImage: 'man1.jpg',
     dcid: '11909205',
   },
   {
-    id: 'FRA-2024-0003',
-    name: 'Carlos Rodriguez',
-    date: '2024-03-13',
+    id: 'FR2602202573926',
+    name: 'Rameswar khanna',
+    date: '2025-02-26',
     status: 'Under Review',
     document:
-      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
+      'https://www.dropbox.com/scl/fi/mo95x7w88a5c2nx8805tz/PREM-BAHADUR-NEPALI-2701202590263.pdf?rlkey=j0r773dnqfd3nbqf6rdiz60t3&st=jgzyhl67&dl=1',
     dcid: '123',
   },
   {
-    id: 'FRA-2024-0005',
-    name: 'Carlos Rodriguez',
-    date: '2024-03-13',
+    id: 'FR0201202500569',
+    name: 'Abhishek Sharma',
+    date: '2025/01/02',
     status: 'Approved',
     document:
-      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
-    modalImage: 'man1.jpg',
-    dcid: '123',
-  },
-  {
-    id: 'FRA-2024-0005',
-    name: 'Carlos Rodriguez',
-    date: '2024-03-13',
-    status: 'Approved',
-    document:
-      'https://www.dropbox.com/scl/fi/957vi016r7lj5af91bn3z/MohdArbaazSiddiqui_Resume.pdf?rlkey=bhjdpvvg5e0yd9fi1z46oqtsc&st=rhv6b8u1&dl=1',
+      'https://www.dropbox.com/scl/fi/mo95x7w88a5c2nx8805tz/PREM-BAHADUR-NEPALI-2701202590263.pdf?rlkey=j0r773dnqfd3nbqf6rdiz60t3&st=jgzyhl67&dl=1',
     modalImage: 'man1.jpg',
     dcid: '123',
   },
