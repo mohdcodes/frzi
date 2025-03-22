@@ -48,7 +48,9 @@ const applications = [
     name: 'Tulsi Gurung',
     date: '2025/01/25',
     status: 'Approved',
-    document: '',
+    modalImage: 'tulsi.jpg',
+    document:
+      'https://www.dropbox.com/scl/fi/jxj3dpw56vwhex2c0e2hk/TULSI-GURUNG-2501202580038.pdf?rlkey=wurqknx2fkiwq6jdk0xqsdmjp&st=dcd2nvwy&dl=1',
     dcid: 'PA2965554',
   },
 ];
